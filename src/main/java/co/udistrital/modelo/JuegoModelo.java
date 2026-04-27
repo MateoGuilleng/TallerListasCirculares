@@ -13,6 +13,8 @@ public class JuegoModelo {
     private Jugador actual;
     private Jugador anterior;
     private int cantidadJugadores;
+    private static final int MAX_JUGADORES = 5;
+
 
     /**
      * Construye la mesa circular conectando N jugadores. Al finalizar, el

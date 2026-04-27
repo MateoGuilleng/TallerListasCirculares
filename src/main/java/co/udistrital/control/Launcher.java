@@ -9,12 +9,11 @@ package co.udistrital.control;
  * @author USER
  */
 /**
- * Punto de entrada del cliente. Únicamente instancia el JuegoControlador para
- * arrancar la aplicación.
+ * Punto de entrada de la aplicacion. Unicamente instancia el ControlPrincipal.
  */
 public class Launcher {
 
     public static void main(String[] args) {
-        new JuegoControlador();
+        new ControlPrincipal();
     }
 }

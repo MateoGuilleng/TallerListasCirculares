@@ -9,9 +9,8 @@ import co.udistrital.vista.JuegoVista;
  * Controlador maestro de la aplicacion lista simple enlazada Circular.
  * <p>
  * Actua como orquestador principal dentro de la arquitectura MVC:
- * instancia el modelo ({@link JuegoModelo}), la vista ({@link JuegoVista})
- * y el controlador de eventos ({@link ControlVista}), inyectando las
- * dependencias necesarias entre ellos.
+ * instancia el modelo ({@link JuegoModelo}) y el controlador de eventos ({@link ControlVista}),
+ * inyectando las dependencias necesarias entre ellos.
  * </p>
  * <p>
  * Es la unica clase que el {@link Launcher} necesita instanciar para
@@ -21,22 +20,19 @@ import co.udistrital.vista.JuegoVista;
 public class ControlPrincipal {
 
     private JuegoModelo  modelo;
-    private JuegoVista   vista;
     private ControlVista controlVista;
     private int          ultimoDado = 0;
 
     /**
-     * Constructor principal. Crea el modelo, la vista y el controlador de eventos,
+     * Constructor principal. Crea el modelo y el controlador de eventos,
      * los conecta entre si y arranca la interfaz grafica en el hilo de Swing.
      */
     public ControlPrincipal() {
         modelo       = new JuegoModelo();
-        vista        = new JuegoVista();
-        controlVista = new ControlVista(this, vista);
+        controlVista = new ControlVista(this);
 
         SwingUtilities.invokeLater(() -> {
-            vista.agregarListener(controlVista);
-            vista.setVisible(true);
+            controlVista.mostrarVista();
             controlVista.arrancar();
         });
     }

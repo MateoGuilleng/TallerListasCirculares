@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"co.udistrital.control","l":"JuegoControlador"},{"p":"co.udistrital.modelo","l":"JuegoModelo"},{"p":"co.udistrital.vista","l":"JuegoVista"},{"p":"co.udistrital.modelo","l":"Jugador"},{"p":"co.udistrital.control","l":"Launcher"}];updateSearchResults();

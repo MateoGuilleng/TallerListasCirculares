@@ -1,0 +1,45 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+--no-fonts
+-encoding
+'UTF-8'
+-protected
+--release
+24
+-sourcepath
+'C:/Users/USER/Documents/Java Database Connectivity/TallerListasCirculares/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/USER/Documents/Java Database Connectivity/TallerListasCirculares/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'TallerListasCirculares 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'TallerListasCirculares 1.0-SNAPSHOT API'
+co.udistrital.control
+co.udistrital.modelo
+co.udistrital.vista
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\src\main\java = 1777265382200
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\allclasses-index.html = 1777268816026
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\allpackages-index.html = 1777268816029
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\element-list = 1777268815931
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\help-doc.html = 1777268816058
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\index-all.html = 1777268816049
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\index.html = 1777268816012
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\member-search-index.js = 1777268816034
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\module-search-index.js = 1777268816030
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\overview-summary.html = 1777268816054
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\overview-tree.html = 1777268816006
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\package-search-index.js = 1777268816032
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\search.html = 1777268816052
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\tag-search-index.js = 1777268816036
+C:\Users\USER\Documents\Java Database Connectivity\TallerListasCirculares\target\reports\apidocs\type-search-index.js = 1777268816033

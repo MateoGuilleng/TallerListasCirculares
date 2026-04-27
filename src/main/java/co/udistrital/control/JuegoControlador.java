@@ -7,16 +7,27 @@ package co.udistrital.control;
 import co.udistrital.modelo.JuegoModelo;
 import co.udistrital.vista.JuegoVista;
 
+/**
+ * Clase controladora que orquesta la comunicación entre el modelo y la vista.
+ * Aplica el patrón de diseño MVC.
+ */
 public class JuegoControlador {
+
     private JuegoModelo modelo;
     private JuegoVista vista;
 
+    /**
+     * Constructor que inicializa los componentes y arranca el flujo del juego.
+     */
     public JuegoControlador() {
         modelo = new JuegoModelo();
         vista = new JuegoVista();
         iniciarSesionJuego();
     }
 
+    /**
+     * Ejecuta el bucle principal del juego hasta que solo quede un ganador.
+     */
     private void iniciarSesionJuego() {
         int n = vista.leerEntero("¿Cuántos jugadores participan?");
         modelo.crearMesaCircular(n);

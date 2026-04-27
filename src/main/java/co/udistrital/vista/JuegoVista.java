@@ -81,7 +81,7 @@ public class JuegoVista extends JFrame {
      * Construye la ventana principal, carga los iconos del dado y ensambla la UI.
      */
     public JuegoVista() {
-        super("Mini-Pig Circular");
+        super("lista simple enlazada Circular");
         dadoIconos = cargarDado();
         buildUI();
         setDefaultCloseOperation(EXIT_ON_CLOSE);

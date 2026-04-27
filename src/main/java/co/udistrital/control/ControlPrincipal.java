@@ -6,7 +6,7 @@ import co.udistrital.modelo.JuegoModelo;
 import co.udistrital.vista.JuegoVista;
 
 /**
- * Controlador maestro de la aplicacion Mini-Pig Circular.
+ * Controlador maestro de la aplicacion lista simple enlazada Circular.
  * <p>
  * Actua como orquestador principal dentro de la arquitectura MVC:
  * instancia el modelo ({@link JuegoModelo}), la vista ({@link JuegoVista})

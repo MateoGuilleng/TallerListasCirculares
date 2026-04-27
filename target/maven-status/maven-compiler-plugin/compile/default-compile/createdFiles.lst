@@ -1,0 +1,6 @@
+co\udistrital\modelo\JuegoModelo.class
+co\udistrital\control\JuegoControlador.class
+co\udistrital\modelo\Jugador.class
+co\udistrital\control\Launcher.class
+co\udistrital\vista\JuegoVista.class
+co\udistrital\modelo\TallerListasCirculares.class

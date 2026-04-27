@@ -1,27 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.udistrital.modelo;
 
 /**
- * Gestiona la lógica de la mesa redonda y las reglas del juego. Implementa la
- * estructura de una lista enlazada simple circular.
+ * Gestiona la logica de la mesa redonda y las reglas del juego.
+ * <p>
+ * Implementa una lista enlazada simple circular donde cada nodo es un
+ * {@link Jugador}. Dos punteros ({@code actual} y {@code anterior}) permiten
+ * recorrer y eliminar nodos en O(1) sin necesidad de busqueda previa.
+ * </p>
  */
 public class JuegoModelo {
 
     private Jugador actual;
     private Jugador anterior;
-    private int cantidadJugadores;
-    private static final int MAX_JUGADORES = 5;
-
+    private int     cantidadJugadores;
 
     /**
-     * Construye la mesa circular conectando N jugadores. Al finalizar, el
-     * puntero 'actual' queda en el Jugador 1 y el 'anterior' en el último
-     * Jugador creado.
+     * Construye la mesa circular conectando {@code n} jugadores en orden.
+     * <p>
+     * Al finalizar, {@code actual} apunta al Jugador 1 y {@code anterior}
+     * al ultimo jugador creado, cerrando el ciclo.
+     * </p>
      *
-     * * @param n Cantidad de jugadores iniciales.
+     * @param n Cantidad de jugadores iniciales (minimo 2).
      */
     public void crearMesaCircular(int n) {
         this.cantidadJugadores = n;
@@ -34,13 +34,16 @@ public class JuegoModelo {
             actual = nuevo;
         }
         actual.setSiguiente(cabeza);
-        anterior = actual; // El anterior del 1 es el último (N)
-        actual = cabeza;   // Iniciamos con el 1
+        anterior = actual; // El anterior del Jugador 1 es el ultimo (N)
+        actual   = cabeza; // Iniciamos con el Jugador 1
     }
 
     /**
-     * Elimina al jugador actual de la mesa puenteando los nodos. El recolector
-     * de basura de Java liberará la memoria del nodo desconectado.
+     * Elimina al jugador actual de la mesa puenteando los nodos.
+     * <p>
+     * El nodo desconectado sera liberado por el recolector de basura de Java.
+     * Tras la eliminacion, {@code actual} pasa a ser el siguiente jugador en el circulo.
+     * </p>
      */
     public void eliminarJugadorActual() {
         anterior.setSiguiente(actual.getSiguiente());
@@ -49,24 +52,37 @@ public class JuegoModelo {
     }
 
     /**
-     * Desplaza los punteros al siguiente jugador en el sentido de la lista.
+     * Desplaza los punteros al siguiente jugador en el sentido de la lista,
+     * sin eliminar al jugador actual.
      */
     public void avanzarTurno() {
         anterior = actual;
-        actual = actual.getSiguiente();
+        actual   = actual.getSiguiente();
     }
 
     /**
-     * @return Un número entero aleatorio entre 1 y 6.
+     * Genera un numero aleatorio simulando el lanzamiento de un dado de seis caras.
+     *
+     * @return Entero aleatorio entre 1 y 6 (inclusive).
      */
     public int lanzarDado() {
         return (int) (Math.random() * 6) + 1;
     }
 
+    /**
+     * Retorna el ID del jugador cuyo turno es el actual.
+     *
+     * @return ID del jugador actual.
+     */
     public int getIdActual() {
         return actual.getId();
     }
 
+    /**
+     * Retorna la cantidad de jugadores que siguen activos en la mesa.
+     *
+     * @return Total de jugadores activos.
+     */
     public int getTotal() {
         return cantidadJugadores;
     }

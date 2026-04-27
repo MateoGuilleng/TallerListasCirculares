@@ -1,18 +1,37 @@
 package co.udistrital.vista;
 
-import co.udistrital.control.ControlVista;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
+import co.udistrital.control.ControlVista;
+
 /**
- * Vista principal del juego. Muestra la mesa circular con los gatos,
- * el dado y el log de eventos.
+ * Vista principal del juego. Muestra la mesa circular con los gatos, el dado y
+ * el log de eventos.
  */
 public class JuegoVista extends JFrame {
 
@@ -35,19 +54,19 @@ public class JuegoVista extends JFrame {
         "src/Images/Dado/dado6.png"
     };
 
-    private static final int CAT_SIZE  = 80;
+    private static final int CAT_SIZE = 80;
     private static final int DADO_SIZE = 70;
 
-    private MesaPanel          mesaPanel;
-    private JLabel             dadoLabel;
-    private JTextArea          logArea;
-    private JButton            btnTurno;
-    private JButton            btnReiniciar;
-    private ImageIcon[]        dadoIconos;
+    private MesaPanel mesaPanel;
+    private JLabel dadoLabel;
+    private JTextArea logArea;
+    private JButton btnTurno;
+    private JButton btnReiniciar;
+    private ImageIcon[] dadoIconos;
     private List<JugadorPanel> jugadoresPanels = new ArrayList<>();
 
     public JuegoVista() {
-        super("Mini-Pig Circular");
+        super("Lista enlazada simple Circular");
         dadoIconos = cargarDado();
         buildUI();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -59,7 +78,6 @@ public class JuegoVista extends JFrame {
     // =========================================================================
     // Construccion de la UI
     // =========================================================================
-
     private void buildUI() {
         setLayout(new BorderLayout(8, 8));
         getContentPane().setBackground(new Color(34, 40, 49));
@@ -126,7 +144,6 @@ public class JuegoVista extends JFrame {
     // =========================================================================
     // API publica para ControlVista
     // =========================================================================
-
     public void agregarListener(ActionListener listener) {
         btnTurno.addActionListener(listener);
         btnReiniciar.addActionListener(listener);
@@ -188,7 +205,6 @@ public class JuegoVista extends JFrame {
     // =========================================================================
     // Carga de imagenes
     // =========================================================================
-
     private ImageIcon[] cargarDado() {
         ImageIcon[] iconos = new ImageIcon[6];
         for (int i = 0; i < 6; i++) {
@@ -217,9 +233,11 @@ public class JuegoVista extends JFrame {
     // =========================================================================
     // Clases internas
     // =========================================================================
-
-    /** Panel que dibuja la mesa circular y posiciona los jugadores en circulo. */
+    /**
+     * Panel que dibuja la mesa circular y posiciona los jugadores en circulo.
+     */
     private static class MesaPanel extends JPanel {
+
         private int numJugadores = 0;
 
         MesaPanel() {
@@ -238,7 +256,7 @@ public class JuegoVista extends JFrame {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             int cx = getWidth() / 2;
             int cy = getHeight() / 2;
-            int r  = Math.min(cx, cy) - 55;
+            int r = Math.min(cx, cy) - 55;
             g2.setColor(new Color(34, 85, 34, 180));
             g2.fillOval(cx - r, cy - r, r * 2, r * 2);
             g2.setColor(new Color(0, 120, 0));
@@ -249,10 +267,12 @@ public class JuegoVista extends JFrame {
         @Override
         public void doLayout() {
             super.doLayout();
-            if (numJugadores == 0) return;
+            if (numJugadores == 0) {
+                return;
+            }
             int cx = getWidth() / 2;
             int cy = getHeight() / 2;
-            int r  = Math.min(cx, cy) - 70;
+            int r = Math.min(cx, cy) - 70;
             int pw = 100, ph = 120;
 
             for (int i = 0; i < getComponentCount(); i++) {
@@ -264,13 +284,16 @@ public class JuegoVista extends JFrame {
         }
     }
 
-    /** Panel de un jugador: nombre encima + imagen del gato. */
+    /**
+     * Panel de un jugador: nombre encima + imagen del gato.
+     */
     public static class JugadorPanel extends JPanel {
-        private final int       id;
-        private final JLabel    nombreLabel;
-        private final JLabel    imgLabel;
-        private boolean         activo    = false;
-        private boolean         eliminado = false;
+
+        private final int id;
+        private final JLabel nombreLabel;
+        private final JLabel imgLabel;
+        private boolean activo = false;
+        private boolean eliminado = false;
 
         JugadorPanel(int id, ImageIcon icono) {
             this.id = id;
@@ -284,10 +307,12 @@ public class JuegoVista extends JFrame {
             imgLabel = new JLabel(icono, SwingConstants.CENTER);
 
             add(nombreLabel, BorderLayout.NORTH);
-            add(imgLabel,    BorderLayout.CENTER);
+            add(imgLabel, BorderLayout.CENTER);
         }
 
-        public int getId() { return id; }
+        public int getId() {
+            return id;
+        }
 
         public void setActivo(boolean activo) {
             this.activo = activo;

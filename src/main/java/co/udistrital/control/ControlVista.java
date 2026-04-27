@@ -45,7 +45,7 @@ public class ControlVista implements ActionListener {
             String input = JOptionPane.showInputDialog(
                     vista,
                     "Cuantos jugadores participan? (minimo 2)",
-                    "Mini-Pig Circular",
+                    "Lista Circular",
                     JOptionPane.QUESTION_MESSAGE);
 
             if (input == null) System.exit(0);

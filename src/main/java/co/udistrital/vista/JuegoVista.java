@@ -30,7 +30,7 @@ import javax.swing.Timer;
 import co.udistrital.control.ControlVista;
 
 /**
- * Vista principal del juego Mini-Pig Circular.
+ * Vista principal del juego lista simple enlazada Circular.
  * <p>
  * Extiende {@link JFrame} y construye la interfaz grafica compuesta por:
  * <ul>

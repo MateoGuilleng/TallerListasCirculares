@@ -11,16 +11,15 @@ import co.udistrital.vista.JuegoVista;
 /**
  * Controlador de eventos de la interfaz grafica.
  * <p>
- * Recibe {@link ControlPrincipal} y {@link JuegoVista} por inyeccion de
- * dependencias; nunca los instancia directamente, respetando el principio de
+ * Recibe {@link ControlPrincipal} por inyeccion de dependencias y crea la vista;
+ * nunca instancia directamente la logica de negocio, respetando el principio de
  * inversion de dependencias del patron MVC. Responsabilidades:
  * <ul>
- * <li>Capturar las acciones del usuario (botones "Lanzar Dado" y
- * "Reiniciar").</li>
+ * <li>Crear y gestionar la vista ({@link JuegoVista}).</li>
+ * <li>Capturar las acciones del usuario (botones "Lanzar Dado" y "Reiniciar").</li>
  * <li>Delegar toda la logica de negocio a {@link ControlPrincipal}.</li>
  * <li>Actualizar la vista con los resultados de cada turno.</li>
- * <li>Solicitar y validar el numero de jugadores al inicio de cada
- * partida.</li>
+ * <li>Solicitar y validar el numero de jugadores al inicio de cada partida.</li>
  * </ul>
  * </p>
  */
@@ -36,25 +35,29 @@ public class ControlVista implements ActionListener {
      */
     public static final String CMD_REINICIAR = "REINICIAR";
 
-    private final ControlPrincipal controlPrincipal;
-    private final JuegoVista vista;
+    private JuegoVista vista;
+    private ControlPrincipal controlPrincipal;
 
     /**
-     * Construye el controlador de vista con las dependencias inyectadas.
+     * Constructor que recibe el control principal y crea la vista.
      *
-     * @param controlPrincipal Controlador maestro que gestiona la logica del
-     * juego.
-     * @param vista Vista principal de la aplicacion.
+     * @param controlPrincipal Control Principal que gestiona la logica del juego
      */
-    public ControlVista(ControlPrincipal controlPrincipal, JuegoVista vista) {
+    public ControlVista(ControlPrincipal controlPrincipal) {
         this.controlPrincipal = controlPrincipal;
-        this.vista = vista;
+        this.vista = new JuegoVista();
     }
 
     /**
-     * Inicia el flujo de la aplicacion solicitando el numero de jugadores. Debe
-     * ser llamado por {@link ControlPrincipal} una vez que la vista esta
-     * visible.
+     * Muestra la vista principal y registra los listeners
+     */
+    public void mostrarVista() {
+        vista.agregarListener(this);
+        vista.setVisible(true);
+    }
+
+    /**
+     * Inicia el flujo de la aplicacion solicitando el numero de jugadores.
      */
     public void arrancar() {
         pedirJugadoresYArrancar();
@@ -138,6 +141,7 @@ public class ControlVista implements ActionListener {
                 JOptionPane.showMessageDialog(vista,
                         "Gano el Jugador " + ganador + "!",
                         "Fin del juego", JOptionPane.INFORMATION_MESSAGE);
+                vista.habilitarTurno(false);
             } else {
                 vista.resaltarJugador(controlPrincipal.getIdActual());
                 vista.habilitarTurno(true);
@@ -154,7 +158,7 @@ public class ControlVista implements ActionListener {
     private void manejarReiniciar() {
         controlPrincipal.reiniciarModelo();
         vista.habilitarTurno(false);
-        vista.mostrarMensaje("--- Juego reiniciado ---");
+        vista.mostrarMensaje("---Juego reiniciado---");
         pedirJugadoresYArrancar();
     }
 
